@@ -14,6 +14,22 @@ This is an implement of the ECS archetecture in Game by C++17
 
 > - Windows 7 : VS2019 16.10.2
 
+# Helper Document
+ECSMgr
+管理所有的实体和系统，通常定义为唯一的全局变量，其模板参数为支持的原型
+
+Archetype
+原型，表示组件的组合，一个原型管理着Chunk的数组，Chunk中以SOA形式存储的这些组件。其模板参数为该原型所包含的组件
+
+TEntity
+实体，模板参数为其对应的原型，内部数据其实是表示一个句柄。
+
+ArchetypeIter
+原型迭代器，可以遍历相同原型的所有实体的，内部实现为一级索引；虽然通过entity也可以访问到组件，但是entity是2级索引，对于遍历，用迭代器效率更高
+
+如果想给entity添加组件，由于本框架采用强类型实现，一旦entity添加组件，其原型就改变了，相当于其类型改变了。
+因此统一通过createEntity接口，添加组件等效为删除再创建。详情见Example中的createEntity(std::move(...)
+
 ## Example
 ```c++
 #include <iostream>
