@@ -18,7 +18,6 @@ namespace Sun {
 #define SUN_CHUNK_SIZE 16384
 
 	struct Chunk {
-		Chunk* next_ = nullptr;
 		//该Chunk上真实的object个数
 		size_t numEntity_ = 0;
 		//存储object数据

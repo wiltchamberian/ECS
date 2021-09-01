@@ -53,22 +53,10 @@ constexpr bool Sun::Archetype<_Args...>::hasComponent() const {
 	return TContain<_ComType, _Args...>::value;
 }
 
-//template<typename ..._Args>
-//Sun::EntityAddress Sun::Archetype<_Args...>::createObject(const Entity& entity) {
-//	EntityAddress res = requestEntry();
-//
-//	//在chunk的槽位上分配对象
-//	assignObject(res ,entity);
-//
-//	return res;
-//}
-
 template<typename ..._Args>
 size_t Sun::Archetype<_Args...>::erase(const Entity& entity) {
 	//表示被移动的entity索引
 	size_t res = static_cast<size_t>(-1);
-	//check
-	//if (!validation(addr)) return res;
 
 	EntityAddress addr = entityTable_[entity.index];
 

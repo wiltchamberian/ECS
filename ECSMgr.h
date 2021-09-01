@@ -5,21 +5,20 @@
 * 主要组成部分:
 * 1,ECSMgr 2,Archetype 3,Chunk, 4,Entity 
 * ECSMgr管理所有一切
-* 其中包含多个ArchetypeMgr,一个ArchetypeMgr管理相同原型的一组Chunk
-* 每个ArchetypeMgr对应多个Chunk,Chunk用来存储组件数据
-* ECSMgr中存有一个EntityTable,这里记录着每个Entity对应的Archtype*和Chunk索引；
-* 通过这个索引可以找到关联的组件信息；
+* 其中包含多个Archetype,一个Archetype管理相同原型的一组Chunk
+* 每个Archetype对应多个Chunk,Chunk用来存储组件数据
+* 每个Archetype中存有一个EntityTable,其中记录着对应entity的组件位置
 * 而Entity本身可以看成一个句柄，其存储着EntityTable的索引。
 * Entity先索引到EntityTable的节点，再通过该节点索引到组件信息 （2级索引)
 * (采用二级索引的原因是ECS架构下组件可能发生移动，从而导致1级索引失效)
 * 
 * 示意图:
+* Archetype0 ,   Archetype1,...
+* Archetype0 : Chunk0  Chunk1, ... ,Chunk_n...
 * EntityTable:[entityInfo0 ,entityInfo1,..........]
-* ArchetypeMgr0 ,   ArchetypeMgr1,...
-* ArchetypeMgr0 : Chunk0  Chunk1, ... ,Chunk_n...
 * Chunk:[                         ] a fix length buffer   component are in chunk
 * with a SOA format
-* entityInfo save a pointer to  ArchetypeMgr
+* entityInfo save the chunk index and idxInChunk to flag the component position
 * @author : acedtang
 * @date : 2021/8/19
 * @version : ver 1.0

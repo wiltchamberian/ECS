@@ -75,8 +75,6 @@ namespace Sun {
 	protected:
 		ECSMgrBase* ecsMgr_ = nullptr;
 		int numEntity_ = 0;
-		//始终指向最小索引的未满chunk，如果不存在，则为-1
-		int indexToChunk_ = -1;
 		SVector<Chunk*> chunks_;
 		//该原型中任意chunk所能容纳的最大object个数
 		size_t capacity_ = 0;
@@ -84,7 +82,7 @@ namespace Sun {
 		size_t objectSize_ = 0;
 		//entity 偏移量始终为0
 		const size_t entityOffset_ = 0;
-		//eneity align size
+		//entity align size
 		size_t entityAlignSiz_ = 0;
 
 		SVector<EntityInfo> entityTable_;
