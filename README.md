@@ -30,7 +30,9 @@ ArchetypeIter
 
 # Update
 1, 从先前的TEntity<...>改为了Entity,这样支持修改entity类型,使用更便捷
+
 2，将entityTable移动到了EntityMgr中，这样移动entity时外部索引保持有效性
+
 3，全部合并为单头文件实现，并做了大量代码优化，
    总共不到700行代码，史上最简洁的ecs实现，无运行期hash
 
