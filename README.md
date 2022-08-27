@@ -1,5 +1,6 @@
 # ECS
-This is an implement of the ECS archetecture in Game by C++20
+It may be the most brief implement of ECS in the world by c++20, 
+no run-time overload, single head file, enjoy it!
 
 ⭐ Star us on GitHub — it helps!
 
@@ -26,6 +27,12 @@ Entity
 
 ArchetypeIter
 原型迭代器，可以遍历相同原型的所有实体的，内部实现为一级索引；虽然通过entity也可以访问到组件，但是entity是2级索引，对于遍历，用迭代器效率更高
+
+# Update
+1, 从先前的TEntity<...>改为了Entity,这样支持修改entity类型,使用更便捷
+2，将entityTable移动到了EntityMgr中，这样移动entity时外部索引保持有效性
+3，全部合并为单头文件实现，并做了大量代码优化，
+   总共不到700行代码，史上最简洁的ecs实现，无运行期hash
 
 
 ## Example
